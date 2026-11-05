@@ -835,7 +835,7 @@
         "errorMessage": "There was a problem retrieving your results. Please try again in a few seconds.",
         "quick_search": {
             "input_label": "Search",
-            "input_placeholder": "What are you looking for?"
+            "input_placeholder": "Search cameras, kits, or describe your problem..."
         },
         "results": {
             "form_label": "Search Keyword:",

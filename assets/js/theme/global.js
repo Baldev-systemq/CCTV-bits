@@ -27,11 +27,11 @@ export default class Global extends PageManager {
         wishlistPreview();
         quickSearch();
         currencySelector(cartId);
+            mobileMenuToggle();
         foundation($(document));
         quickView(this.context);
         carousel(this.context);
         menu();
-        mobileMenuToggle();
         privacyCookieNotification();
         adminBar(secureBaseUrl, channelId, maintenanceModeSettings, JSON.parse(adminBarLanguage), productId, categoryId);
         loadingProgressBar();

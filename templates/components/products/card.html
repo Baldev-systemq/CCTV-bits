@@ -85,14 +85,22 @@
 
         {{!-- 7. Button + wishlist --}}
         <div class="card-cta">
-            {{#if add_to_cart_url}}
-                {{#unless has_options}}
-                    <a href="{{add_to_cart_url}}" class="button button--default card-cta-button">{{lang 'products.add_to_cart'}}</a>
-                {{else}}
-                    <a href="{{url}}" class="button button--default card-cta-button">View options</a>
-                {{/unless}}
+           {{#if out_of_stock_message}}
+                <a href="{{url}}" class="button button--default card-cta-button" aria-disabled="true" tabindex="-1">Out of stock</a>
             {{else}}
-                <a href="{{url}}" class="button button--default card-cta-button">View options</a>
+                {{#is stock_level 0}}
+                    <a href="{{url}}" class="button button--default card-cta-button" aria-disabled="true" tabindex="-1">Out of stock</a>
+                {{else}}
+                    {{#if add_to_cart_url}}
+                        {{#unless has_options}}
+                            <a href="{{add_to_cart_url}}" class="button button--default card-cta-button">{{lang 'products.add_to_cart'}}</a>
+                        {{else}}
+                            <a href="{{url}}" class="button button--default card-cta-button">View options</a>
+                        {{/unless}}
+                    {{else}}
+                        <a href="{{url}}" class="button button--default card-cta-button">View options</a>
+                    {{/if}}
+                {{/is}}
             {{/if}}
 
             {{#if add_to_wishlist_url}}
@@ -103,7 +111,9 @@
                             data-product-image="{{getImage image 'productgallery_size' (cdn theme_settings.default_image_product)}}">♡</button>
                 </form>
             {{else}}
-                <button class="card-wishlist-button" type="button" aria-label="Save product">♡</button>
+                <button class="card-wishlist-button" type="button" aria-label="Save product">
+                    <img src="{{cdn 'assets/img/icon-cart.svg'}}" alt="cart icon" class="header-cart-icon">
+                </button>
             {{/if}}
         </div>
     </div>

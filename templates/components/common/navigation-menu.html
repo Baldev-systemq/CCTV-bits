@@ -1,11 +1,10 @@
-<span class="mobile-closeNav">
-    <i class="icon" aria-hidden="true">
-        <svg><use xlink:href="#icon-close-large" /></svg>
-    </i>
-    close
-</span>
-<nav class="navPages">
-    <ul class="navPages-list navPages-list--user 5765697a656e20596f756e67">
+<nav class="navPages" aria-label="Main navigation">
+    <button class="mobile-closeNav" type="button" aria-label="Close navigation">
+        <i class="icon" aria-hidden="true">
+            <svg><use xlink:href="#icon-close-large" /></svg>
+        </i>
+    </button>
+    <ul class="navPages-list navPages-list--user">
         {{#if currency_selector.currencies.length '>' 1}}
             <li class="navPages-item navPages-item--currency">
                 <a class="navPages-action has-subMenu" href="#" data-collapsible="navPages-currency" aria-controls="navPages-currency" aria-expanded="false">
@@ -166,20 +165,17 @@
              {{/each}}
         {{/if}}
     </ul>
-     <li class="navPages-item">
-       <div class="support-center">
-    <div class="support-icon">
-     <img src="{{cdn 'assets/img/icon-headphone.svg'}}" alt="support icon">
+    <div class="navPages-support">
+        <div class="support-center">
+            <div class="support-icon">
+                <img src="{{cdn 'assets/img/icon-headphone.svg'}}" alt="">
+            </div>
+            <div class="support-content">
+                <a href="tel:01246200000" class="support-number">01246 200 000</a>
+                <span class="support-text">24/7 Support Center</span>
+            </div>
+        </div>
     </div>
-
-    <div class="support-content">
-        <a href="tel:01246200000" class="support-number">
-            01246 200 000
-        </a>
-        <span class="support-text">24/7 Support Center</span>
-    </div>
-</div>
-    </li>
     <ul class="navPages-list navPages-list--user">
         {{#and settings.phone_number theme_settings.header-phone}}
             <li class="navPages-item">

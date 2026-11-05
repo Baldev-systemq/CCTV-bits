@@ -10,7 +10,7 @@
     border-radius: 8px;
 }
 
-.kitsSection-intro { flex: 0 0 380px; }
+.kitsSection-intro { flex: 0 0 560px; }
  
 .kitsSection-products {
     display: block;
@@ -52,8 +52,8 @@ a.button.button--primary.kitsSection-button {
 }
 .kitsSection-description {
     color: #2A3C60;
-    font-weight: 600;
-    font-size: 20px;
+    font-weight: 400;
+    font-size: 18px;
     line-height: 160%;
     margin-bottom: 15px;
 }
@@ -75,13 +75,10 @@ a.button.button--primary.kitsSection-button {
     background-size: 100%;
     background-repeat: no-repeat; 
 
-    .kitsSection-intro { flex: 0 0 510px; }
+    .kitsSection-intro { flex: 0 0 560px; }
 
     .kitsSection-heading {
-        color: #fff;
-        font-size: 2rem;
-        line-height: 1.2;
-        text-transform: none;
+        color: #fff; 
     }
 
     .camerasSection-highlight {
@@ -91,16 +88,32 @@ a.button.button--primary.kitsSection-button {
 
     .kitsSection-description {
         color: #fff;
-        font-size: 1rem;
-        line-height: 1.5;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 160%;
+        margin-bottom: 15px;
     }
 
     .camerasSection-button {
+        display: -webkit-inline-box;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 12px 18px;
+        border-radius: 8px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 140%;
         background: transparent;
         border: 1px solid #00d474;
         color: #00d474;
-        padding: 0.6rem 2.2rem;
-        border-radius: 3px;
+         
 
         &:hover { background: #00d474; color: #fff; }
     }
@@ -113,4 +126,50 @@ a.button.button--primary.kitsSection-button {
 @media (max-width: 1024px) {
     .camerasSection .kitsSection-intro { flex: none; }
     .camerasSection .kitsSection-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+
+@media(max-width: 1440px) {
+   .kitsSection-intro{
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 560px;
+        flex: 0 0 300px;
+    }
+    .card-rating-text {
+        font-size: 10px;
+    }
+    .card .price-section .price {
+        font-size: 18px;
+    }
+    .camerasSection .kitsSection-intro {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 560px;
+        flex: 0 0 470px;
+    }
+    .camerasSection {
+        background-size: cover;
+    }
+}
+
+
+@media(max-width: 1040px) {
+    .kitsSection.camerasSection,
+    .kitsSection {
+        display: grid;
+    } 
+}
+
+@media(max-width: 600px) {
+    .kitsSection {
+        width: 100%;
+        border-radius: 0;
+        padding: 40px 16px;
+    }
+    .kitsSection {
+        margin-bottom: 0 !important;
+    }
+
+    section.kitsSection.camerasSection {
+        margin: 0 !important;
+    }
 }

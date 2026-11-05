@@ -37,10 +37,29 @@
         <a href="tel:01246200000">01246 200 000</a>
         <span class="top-divider">|</span>
         <span>English</span>
-        <span>⌄</span>
+        <span>
+            <svg width="9" height="6" viewBox="0 0 7 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.36 3.63965C3.09333 3.63965 2.85333 3.53298 2.64 3.31965L0 0.679648L0.72 -0.000351429L3.36 2.63965L6 -0.000351429L6.72 0.679648L4.08 3.31965C3.86667 3.53298 3.62667 3.63965 3.36 3.63965Z" fill="#1A1A1A"/>
+            </svg>
+        </span>
     </div>
 </div>
-
+<div class="mobile-top-info-bar" aria-label="Mobile header info">
+    <div class="mobile-top-info-row">
+        <div class="mobile-marquee" aria-label="Delivery offer">
+            <div class="mobile-marquee-track">
+                <div class="mobile-top-info-item">
+                    <span><img src="{{cdn 'assets/img/free-shipping.svg'}}"></span>
+                    <span>Free delivery over £X, and next-day if ordered by 5pm</span>
+                </div>
+                <div class="mobile-top-info-item" aria-hidden="true">
+                    <span><img src="{{cdn 'assets/img/free-shipping.svg'}}"></span>
+                    <span>Free delivery over £X, and next-day if ordered by 5pm</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
     <div class="header-logo--wrap">
         <div class="header-logo{{#if theme_settings.logo_size '===' 'original'}} logo-full-size-desktop{{/if}}{{#if theme_settings.logo_size_mobile '===' 'original'}} logo-full-size-mobile{{/if}}">
             

@@ -8,7 +8,7 @@
                 </i>
                 <span
                     class="{{#if wishlist.items}} countPill--positive{{/if}} wishlist-quantity">{{wishlist.quantity}}</span>
-                <span>Wishlist</span>
+                <span class="sr-only">Wishlist</span>
             </a>
 
             <div class="dropdown-menu" id="wishlist-preview-dropdown" data-dropdown-content aria-hidden="true"></div>
@@ -20,27 +20,45 @@
                     <img src="{{cdn 'assets/img/icon-cart.svg'}}" alt="cart icon" class="header-cart-icon">
                 </i>
                 <span class="{{#if cart.items}} countPill--positive{{/if}} cart-quantity">{{cart.quantity}}</span>
-                <span>Cart</span>
+                <span class="sr-only">Cart</span>
             </a>
 
             <div class="dropdown-menu" id="cart-preview-dropdown" data-dropdown-content aria-hidden="true"></div>
         </li>
         <li class="navUser-item navUser-item--account">
-            <i class="icon" aria-hidden="true">
-                <img src="{{cdn 'assets/img/icon-user.svg'}}" alt="user icon" class="header-user-icon">
-            </i>
             {{#if customer}}
-            <a class="navUser-action" href="{{urls.account.index}}">{{lang 'common.account'}}</a> or
-            <a class="navUser-action" href="{{urls.auth.logout}}">{{lang 'common.logout'}}</a>
+                <a class="navUser-action header-account-icon" href="{{urls.account.index}}" aria-label="{{lang 'common.account'}}">
+                    <i class="icon" aria-hidden="true">
+                        <img src="{{cdn 'assets/img/icon-user.svg'}}" alt="" class="header-user-icon">
+                    </i>
+                </a>
+                <a class="navUser-action" href="{{urls.account.index}}">
+                    {{lang 'common.account'}}
+                </a>
+                <span>{{lang 'common.or'}}</span>
+                <a class="navUser-action" href="{{urls.auth.logout}}">
+                    {{lang 'common.logout'}}
+                </a>
             {{else}}
-            <a class="navUser-action" href="{{urls.auth.login}}" aria-label="{{lang 'common.login'}}">
-                {{lang 'common.login'}}
-            </a>
-            {{#if settings.account_creation_enabled}}
-            <span>{{lang 'common.or'}}</span> <a class="navUser-action 4" href="{{urls.auth.create_account}}">{{lang
-                'common.sign_up'}}</a>
+                <a class="navUser-action header-account-icon" href="{{urls.auth.login}}" aria-label="{{lang 'common.login'}}">
+                    <i class="icon" aria-hidden="true">
+                        <img src="{{cdn 'assets/img/icon-user.svg'}}" alt="" class="header-user-icon">
+                    </i>
+                </a>
+                <a class="navUser-action" href="{{urls.auth.login}}"
+                aria-label="{{lang 'common.login'}}">
+                    {{lang 'common.login'}}
+                </a>
+
+                {{#if settings.account_creation_enabled}}
+                    <span>{{lang 'common.or'}}</span>
+                    <a class="navUser-action" href="{{urls.auth.create_account}}"
+                    aria-label="{{lang 'common.sign_up'}}">
+                        {{lang 'common.sign_up'}}
+                    </a>
+                {{/if}}
             {{/if}}
-            {{/if}}
+
         </li>
         {{> components/common/currency-selector}}
         <li class="navUser-item navUser-item--mobile-search">

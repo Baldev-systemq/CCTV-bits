@@ -41,7 +41,7 @@ export default function loaded() {
 
     function mobileNavPadding() {
         if (windowWidth() <= 800) {
-            const logoHeight = $('.header-logo').outerHeight();
+            const logoHeight = $('.logo-and-toggle').outerHeight();
             $('.mobileMenu-toggle').css('height', `${logoHeight}px`);
             $('.navUser-item--cart').css('height', `${logoHeight}px`);
         } else {
@@ -54,7 +54,7 @@ export default function loaded() {
     function calcHeaderHeightMobile() {
         const headerNoNavHeight = $('.header-logo--wrap').outerHeight(true);
         const searchHeight = $('.quickSearchWrap').outerHeight(true);
-        const mobileHeaderHeight = headerNoNavHeight + searchHeight;
+        const mobileHeaderHeight = headerNoNavHeight;
         const pageOffset = $(window).scrollTop();
 
         if (pageOffset > mobileHeaderHeight) {
@@ -136,7 +136,7 @@ export default function loaded() {
     function toggleHeaderHeightMobile() {
         const headerNoNavHeight = $('.header-logo--wrap').outerHeight(true);
         const searchHeight = $('.quickSearchWrap').outerHeight(true);
-        const mobileHeaderHeight = headerNoNavHeight + searchHeight;
+        const mobileHeaderHeight = headerNoNavHeight;
 
         calcHeaderHeightMobile();
 

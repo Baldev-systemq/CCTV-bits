@@ -40,6 +40,7 @@ export class MobileMenuToggle {
 
         // Auto-bind
         this.onToggleClick = this.onToggleClick.bind(this);
+        this.onOverlayClick = this.onOverlayClick.bind(this);
         this.onCartPreviewOpen = this.onCartPreviewOpen.bind(this);
         this.onMediumMediaQueryMatch = this.onMediumMediaQueryMatch.bind(this);
         this.onSubMenuClick = this.onSubMenuClick.bind(this);
@@ -60,6 +61,7 @@ export class MobileMenuToggle {
 
     bindEvents() {
         this.$toggle.on('click', this.onToggleClick);
+        this.$menu.on('click', this.onOverlayClick);
         this.$header.on(CartPreviewEvents.open, this.onCartPreviewOpen);
         this.$subMenus.on('click', this.onSubMenuClick);
 
@@ -70,6 +72,7 @@ export class MobileMenuToggle {
 
     unbindEvents() {
         this.$toggle.off('click', this.onToggleClick);
+        this.$menu.off('click', this.onOverlayClick);
         this.$header.off(CartPreviewEvents.open, this.onCartPreviewOpen);
 
         if (this.mediumMediaQueryList && this.mediumMediaQueryList.addListener) {
@@ -119,6 +122,12 @@ export class MobileMenuToggle {
         event.preventDefault();
 
         this.toggle();
+    }
+
+    onOverlayClick(event) {
+        if (event.target === this.$menu[0]) {
+            this.hide();
+        }
     }
 
     onCartPreviewOpen() {
