@@ -1,0 +1,110 @@
+<article class="card
+    {{#if alternate}} card--alternate{{/if}}
+    {{#or price.non_sale_price_with_tax price.non_sale_price_without_tax}} has-sale-price{{/or}}"
+    {{#if settings.data_tag_enabled}}
+        data-event-type="{{event}}"
+        data-entity-id="{{id}}"
+        data-name="{{name}}"
+        data-product-category="{{#each category}}{{#if @last}}{{this}}{{else}}{{this}}, {{/if}}{{/each}}"
+        data-product-brand="{{brand.name}}"
+        data-product-price="{{#if price}}{{#if price.with_tax}}{{price.with_tax.value}}{{else}}{{price.without_tax.value}}{{/if}}{{/if}}"
+        data-position="{{position}}"
+    {{/if}}>
+
+    <figure class="card-figure">
+        {{#or price.sale_price_with_tax.value price.sale_price_without_tax.value}}
+            {{#if theme_settings.show_sale_badges}}
+                <div class="sale-flag-side"><span class="sale-text">Sale</span></div>
+            {{/if}}
+        {{/or}}
+
+        <a href="{{url}}" class="card-figure__link"
+           aria-label="{{> components/products/product-info}}"
+           {{#if settings.data_tag_enabled}}data-event-type="product-click"{{/if}}>
+            <div class="card-img-container">
+                <img class="card-image lazyload" data-sizes="auto"
+                     src="{{cdn 'img/loading.svg'}}"
+                     data-src="{{getImage image 'productgallery_size' (cdn theme_settings.default_image_product)}}"
+                     alt="{{image.alt}}" title="{{image.alt}}">
+            </div>
+        </a>
+    </figure>
+
+    <div class="card-body">
+        {{!-- 1. Title --}}
+        <h4 class="card-title">
+            <a aria-label="{{> components/products/product-info}}" href="{{url}}"
+               {{#if settings.data_tag_enabled}}data-event-type="product-click"{{/if}}>{{name}}</a>
+        </h4>
+
+        {{!-- 2. Feature chips (everything except Colour; CSS shows only the first 4) --}}
+        {{#if custom_fields}}
+            <div class="card-feature-list">
+                {{#each custom_fields}}
+                    {{#unless (if (toLowerCase name) '===' 'colour')}}
+                        <span class="card-feature" data-feature="{{toLowerCase value}}">{{value}}</span>
+                    {{/unless}}
+                {{/each}}
+            </div>
+        {{/if}}
+
+        {{!-- 3. Reviews --}}
+        <div class="card-rating">
+            <span class="rating--small">{{> components/products/ratings rating=rating}}</span>
+            <span class="card-rating-text">
+                {{#if num_reviews}}({{num_reviews}}){{else}}(No reviews yet){{/if}}
+            </span>
+        </div>
+
+        {{!-- 4. Stock --}}
+        {{#if out_of_stock_message}}
+            <span class="card-status card-status--out">{{out_of_stock_message}}</span>
+        {{else}}
+            {{#is stock_level 0}}
+                <span class="card-status card-status--out">Out of stock</span>
+            {{else}}
+                <span class="card-status card-status--in">In stock <span class="Inner_color">- arrives</span> tomorrow</span>
+            {{/is}}
+        {{/if}}
+
+        {{!-- 5. Price --}}
+        <div class="card-text" data-test-info-type="price">
+            {{#if price}}
+                {{> components/products/price price=price}}
+            {{/if}}
+        </div>
+
+        {{!-- 6. Colour swatches (from the Colour custom fields) --}}
+        <div class="card-swatches">
+            {{#each custom_fields}}
+                {{#if (toLowerCase name) '===' 'colour'}}
+                    <span class="card-swatch" data-colour="{{toLowerCase value}}" title="{{value}}"></span>
+                {{/if}}
+            {{/each}}
+        </div>
+
+        {{!-- 7. Button + wishlist --}}
+        <div class="card-cta">
+            {{#if add_to_cart_url}}
+                {{#unless has_options}}
+                    <a href="{{add_to_cart_url}}" class="button button--default card-cta-button">{{lang 'products.add_to_cart'}}</a>
+                {{else}}
+                    <a href="{{url}}" class="button button--default card-cta-button">View options</a>
+                {{/unless}}
+            {{else}}
+                <a href="{{url}}" class="button button--default card-cta-button">View options</a>
+            {{/if}}
+
+            {{#if add_to_wishlist_url}}
+                <form class="card-wishlist-form" action="{{add_to_wishlist_url}}" method="post" data-wishlist-form>
+                    <input type="hidden" name="product_id" value="{{id}}">
+                    <button class="card-wishlist-button" type="submit" aria-label="Save product"
+                            data-product-id="{{id}}" data-product-name="{{name}}" data-product-url="{{url}}"
+                            data-product-image="{{getImage image 'productgallery_size' (cdn theme_settings.default_image_product)}}">♡</button>
+                </form>
+            {{else}}
+                <button class="card-wishlist-button" type="button" aria-label="Save product">♡</button>
+            {{/if}}
+        </div>
+    </div>
+</article>

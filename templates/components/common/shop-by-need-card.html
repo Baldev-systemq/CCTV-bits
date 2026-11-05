@@ -1,0 +1,13 @@
+{{#if label}}
+    <li class="shop-by-need-card">
+        <a href="{{link}}">
+            {{#if image}}
+                <img src="https://cdn11.bigcommerce.com/s-vwpjbwh41t/images/stencil/original/image-manager/{{image}}" alt="{{label}}" loading="lazy">
+            {{/if}}
+            <span class="shop-by-need-label">
+                {{label}}
+                {{> components/common/shop-by-need-arrow}}
+            </span>
+        </a>
+    </li>
+{{/if}}

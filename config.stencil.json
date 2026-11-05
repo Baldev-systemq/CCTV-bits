@@ -1,0 +1,11 @@
+{
+  "customLayouts": {
+    "brand": {},
+    "category": {},
+    "page": {},
+    "product": {}
+  },
+  "normalStoreUrl": "https://cctv-bits-1910412.mybigcommerce.com/",
+  "port": "5051",
+  "packageManager": "npm"
+}

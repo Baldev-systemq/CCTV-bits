@@ -1,0 +1,64 @@
+<section class="shop-by-type">
+    <div class="container">
+        {{#if theme_settings.sbt_title}}
+            <h2 class="shop-by-type-title">{{theme_settings.sbt_title}}</h2>
+        {{/if}}
+
+        <ul class="shop-by-type-grid">
+            {{#if theme_settings.sbt_1_label}}
+            <li class="shop-by-type-card">
+                <a href="{{theme_settings.sbt_1_link}}">
+                    <div class="shop-by-type-image">
+                        {{#if theme_settings.sbt_1_image}}<img src="https://cdn11.bigcommerce.com/s-vwpjbwh41t/images/stencil/original/image-manager/{{theme_settings.sbt_1_image}}" alt="{{theme_settings.sbt_1_label}}" loading="lazy">{{/if}}
+                    </div>
+                    <span class="shop-by-type-label"><span class="shop-by-type-name">{{theme_settings.sbt_1_label}}</span> {{> components/common/shop-by-need-arrow}}</span>
+                </a>
+            </li>
+            {{/if}}
+
+            {{#if theme_settings.sbt_2_label}}
+            <li class="shop-by-type-card">
+                <a href="{{theme_settings.sbt_2_link}}">
+                    <div class="shop-by-type-image">
+                        {{#if theme_settings.sbt_2_image}}<img src="https://cdn11.bigcommerce.com/s-vwpjbwh41t/images/stencil/original/image-manager/{{theme_settings.sbt_2_image}}" alt="{{theme_settings.sbt_2_label}}" loading="lazy">{{/if}}
+                    </div>
+                    <span class="shop-by-type-label"><span class="shop-by-type-name">{{theme_settings.sbt_2_label}}</span> {{> components/common/shop-by-need-arrow}}</span>
+                </a>
+            </li>
+            {{/if}}
+
+            {{#if theme_settings.sbt_3_label}}
+            <li class="shop-by-type-card">
+                <a href="{{theme_settings.sbt_3_link}}">
+                    <div class="shop-by-type-image">
+                        {{#if theme_settings.sbt_3_image}}<img src="https://cdn11.bigcommerce.com/s-vwpjbwh41t/images/stencil/original/image-manager/{{theme_settings.sbt_3_image}}" alt="{{theme_settings.sbt_3_label}}" loading="lazy">{{/if}}
+                    </div>
+                    <span class="shop-by-type-label"><span class="shop-by-type-name">{{theme_settings.sbt_3_label}}</span> {{> components/common/shop-by-need-arrow}}</span>
+                </a>
+            </li>
+            {{/if}}
+
+            {{#if theme_settings.sbt_4_label}}
+            <li class="shop-by-type-card">
+                <a href="{{theme_settings.sbt_4_link}}">
+                    <div class="shop-by-type-image">
+                        {{#if theme_settings.sbt_4_image}}<img src="https://cdn11.bigcommerce.com/s-vwpjbwh41t/images/stencil/original/image-manager/{{theme_settings.sbt_4_image}}" alt="{{theme_settings.sbt_4_label}}" loading="lazy">{{/if}}
+                    </div>
+                    <span class="shop-by-type-label"><span class="shop-by-type-name">{{theme_settings.sbt_4_label}}</span> {{> components/common/shop-by-need-arrow}}</span>
+                </a>
+            </li>
+            {{/if}}
+
+            {{#if theme_settings.sbt_5_label}}
+            <li class="shop-by-type-card">
+                <a href="{{theme_settings.sbt_5_link}}">
+                    <div class="shop-by-type-image">
+                        {{#if theme_settings.sbt_5_image}}<img src="https://cdn11.bigcommerce.com/s-vwpjbwh41t/images/stencil/original/image-manager/{{theme_settings.sbt_5_image}}" alt="{{theme_settings.sbt_5_label}}" loading="lazy">{{/if}}
+                    </div>
+                    <span class="shop-by-type-label"><span class="shop-by-type-name">{{theme_settings.sbt_5_label}}</span> {{> components/common/shop-by-need-arrow}}</span>
+                </a>
+            </li>
+            {{/if}}
+        </ul>
+    </div>
+</section>

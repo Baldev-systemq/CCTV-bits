@@ -1,0 +1,197 @@
+{{#if banners.bottom}}
+{{#if settings.data_tag_enabled}}
+<div class="banners" data-banner-location="bottom">
+    {{#each (limit banners.bottom_metadata 1)}}
+    <div class="banner" data-event-type="promotion" data-entity-id="{{this.id}}" data-name="{{this.banner-name}}"
+        data-position="{{this.location}}" data-name="{{this.banner-name}}">
+        <div data-event-type="promotion-click">
+            {{{this.content}}}
+        </div>
+    </div>
+    {{/each}}
+</div>
+{{else}}
+<div class="banners" data-banner-location="bottom">
+    <div class="banner">
+        {{{limit banners.bottom 1}}}
+    </div>
+</div>
+{{/if}}
+{{/if}}
+<!-- 
+{{#and settings.show_newsletter_box theme_settings.show_newsletter_signup}}
+<div class="footer-newsletter">
+    <div class="container">
+        {{> components/common/subscription-form}}
+    </div>
+</div>
+{{/and}} -->
+
+<footer class="footer" role="contentinfo">
+    <h2 class="footer-title-sr-only">{{lang 'footer.title'}}</h2>
+    <div class="container">
+        <section class="footer-info 4a616d6573">
+            <article class="footer-info-col footer-info-col--logo" data-section-type="footer-logo">
+        <a href="{{urls.home}}" class="footer-logo-link">
+            {{#if settings.store_logo.image}}
+                <img class="footer-logo-image"
+                     src="https://cdn11.bigcommerce.com/s-vwpjbwh41t/images/stencil/original/image-manager/logo-footer.png?t=1793809109"
+                     alt="{{settings.store_logo.title}}"
+                     title="{{settings.store_logo.title}}">
+            {{else}}
+                <span class="footer-logo-text">{{settings.store_name}}</span>
+            {{/if}}
+        </a>
+    </article>
+            <article class="footer-info-col footer-info-dropdown footer-info-col--small"
+                data-section-type="footer-categories">
+                <h5 class="footer-info-heading">
+                    {{lang 'footer.categories'}}
+                    <i class="icon" aria-hidden="true">
+                        <svg>
+                            <use xlink:href="#icon-downselector" />
+                        </svg>
+                    </i>
+                </h5>
+                <ul class="footer-info-list">
+                    {{#each categories}}
+                    <li>
+                        <a href="{{url}}">{{name}}</a>
+                    </li>
+                    {{/each}}
+                    {{#if settings.gift_certificates_enabled}}
+                    <li>
+                        <a href="{{urls.gift_certificate.purchase}}">{{lang 'common.gift_cert'}}</a>
+                    </li>
+                    {{/if}}
+                </ul>
+            </article>
+
+            <article class="footer-info-col footer-info-dropdown footer-info-col--small"
+                data-section-type="footer-webPages">
+                <h5 class="footer-info-heading">
+                    {{lang 'footer.navigate'}}
+                    <i class="icon" aria-hidden="true">
+                        <svg>
+                            <use xlink:href="#icon-downselector" />
+                        </svg>
+                    </i>
+                </h5>
+                <ul class="footer-info-list">
+                    {{#each pages}}
+                    <li>
+                        <a href="{{url}}">{{name}}</a>
+                    </li>
+                    {{/each}}
+                    <li>
+                        <a href="{{urls.sitemap}}">{{lang 'sitemap.page_title'}}</a>
+                    </li>
+                </ul>
+            </article>
+
+            <article class="footer-info-col footer-info-dropdown footer-info-col--small"
+                data-section-type="footer-services">
+                <h5 class="footer-info-heading">
+                    Services
+                    <i class="icon" aria-hidden="true">
+                        <svg>
+                            <use xlink:href="#icon-downselector" />
+                        </svg>
+                    </i>
+                </h5>
+                <ul class="footer-info-list">
+                    <li><a href="/blog/">Blog</a></li>
+                    <li><a href="/our-experts/">Our Experts</a></li>
+                </ul>
+            </article>
+
+            <article class="footer-info-col footer-info-dropdown footer-info-col--small"
+                data-section-type="footer-customer-care">
+                <h5 class="footer-info-heading">
+                    Customer Care
+                    <i class="icon" aria-hidden="true">
+                        <svg>
+                            <use xlink:href="#icon-downselector" />
+                        </svg>
+                    </i>
+                </h5>
+                <ul class="footer-info-list">
+                    <li>
+                        WhatsApp: <a href="https://wa.me/911246200000" target="_blank" rel="noopener">01246 200 000</a>
+                    </li>
+                    <li>
+                        Email Us: <a href="mailto:cctvbits@gmail.com">cctvbits@gmail.com</a>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- {{#and theme_settings.shop_by_brand_show_footer shop_by_brand.length}}
+            <article class="footer-info-col footer-info-dropdown footer-info-col--small"
+                data-section-type="footer-brands">
+                <h5 class="footer-info-heading">
+                    {{lang 'footer.brands'}}
+                    <i class="icon" aria-hidden="true">
+                        <svg>
+                            <use xlink:href="#icon-downselector" />
+                        </svg>
+                    </i>
+                </h5>
+                <ul class="footer-info-list">
+                    {{#each shop_by_brand}}
+                    <li>
+                        <a href="{{url}}">{{name}}</a>
+                    </li>
+                    {{/each}}
+                    <li><a href="{{urls.brands}}">{{lang 'common.view_all'}}</a></li>
+                </ul>
+            </article>
+            {{/and}} -->
+
+            {{#if theme_settings.social_icons_footer}}
+            <article class="footer-info-col footer-mobile-limited footer-info-col--small"
+                data-section-type="footer-webPages">
+                <h5 class="footer-info-heading">{{lang 'social.connect'}}</h5>
+                {{> components/common/social-links}}
+            </article>
+            {{/if}}
+
+            {{#if settings.address}}
+            <article class="footer-info-col footer-mobile-limited footer-info-col--small" data-section-type="storeInfo">
+                <h5 class="footer-info-heading footer-store-name">{{settings.store_name}}</h5>
+                <address>{{nl2br settings.address}}</address>
+                {{#if settings.phone_number}}
+                <div class="footer-info-phone">
+                    <i class="icon" aria-hidden="true">
+                        <svg>
+                            <use xlink:href="#icon-phone" />
+                        </svg>
+                    </i>
+                    <a href="tel:{{settings.phone_number}}">{{settings.phone_number}}</a>
+                </div>
+                {{/if}}
+            </article>
+            {{/if}}
+        </section>
+        <div class="footer-copyright">
+            <span><a href="/privacy-policy/" class="privacy-policy">Privacy Policy</a> <a href="/terms-conditions/" class="terms-conditions">Terms &amp; Conditions</a></span>
+             {{#if theme_settings.show_copyright_footer}}
+            <p class="powered-by">&copy; {{moment format="YYYY"}} {{settings.store_name}} All rights reserved. </p>
+            {{/if}}
+            {{> components/common/payment-icons}}
+        </div>
+
+        <!-- {{#or theme_settings.show_powered_by theme_settings.show_built_by}}
+        <div class="footer-copyright" style="font-size: 12px;">
+            {{#if theme_settings.show_powered_by}}
+            <p class="powered-by">Powered by <a
+                    href="https://www.bigcommerce.com?utm_source=merchant&amp;utm_medium=poweredbyBC"
+                    rel="nofollow">BigCommerce</a></p>
+            {{/if}}
+            {{#if theme_settings.show_built_by}}
+            <p class="powered-by">Theme by <a href="https://www.weizenyoung.com/" rel="nofollow">Weizen Young</a></p>
+            {{/if}}
+        </div>
+        {{/or}} -->
+    </div>
+    {{{region name="ssl_site_seal--global"}}}
+</footer>

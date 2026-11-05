@@ -1,0 +1,12 @@
+<div class="featured-header">
+    <h2 class="page-heading">{{lang 'products.featured' }}</h2>
+    <a href="/products" class="button button--default">View all Products</a>
+</div>
+
+<ul class="featured-products productGrid productGrid--maxCol{{ columns }}" data-product-type="featured" {{#if settings.data_tag_enabled}} data-list-name="Featured Products" {{/if}}>
+    {{#each products}}
+        <li class="product">
+            {{>components/products/card settings=../settings theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1) hide_product_quick_view=true show_cart_action=true}}
+        </li>
+    {{/each}}
+</ul>

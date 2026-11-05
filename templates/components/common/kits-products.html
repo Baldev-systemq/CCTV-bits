@@ -1,0 +1,7 @@
+<ul class="productGrid kitsSection-grid featured-products">
+    {{#each category.products}}
+        <li class="product">
+            {{> components/products/card show_compare=false}}
+        </li>
+    {{/each}}
+</ul>

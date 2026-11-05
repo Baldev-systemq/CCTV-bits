@@ -1,0 +1,116 @@
+.kitsSection {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 2rem;
+    padding: 60px 30px;
+    width: calc(100% - 8.4%);
+    margin: 60px auto;
+    background: #EBF4FC;
+    border-radius: 8px;
+}
+
+.kitsSection-intro { flex: 0 0 380px; }
+ 
+.kitsSection-products {
+    display: block;
+    margin: 0;
+}
+a.button.button--primary.kitsSection-button {
+    margin: 0;
+    background: #2A3C60;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 120%;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+    height: 45px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 4px;
+    font-family: 'Open Sans', sans-serif;
+    width: fit-content;
+    padding: 0 40px;
+}
+.kitsSection-products { flex: 1; min-width: 0; }
+
+.kitsSection-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none; 
+}
+.kitsSection-description {
+    color: #2A3C60;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 160%;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 1024px) {
+    .kitsSection { flex-direction: column; }
+    .kitsSection-intro { flex: none; }
+    .kitsSection-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+
+.camerasSection {
+    background-image: url(https://cdn11.bigcommerce.com/s-vwpjbwh41t/images/stencil/original/image-manager/sy-banner-.jpg?t=1793805606);
+    color: #fff;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-position: top right;
+    background-size: 100%;
+    background-repeat: no-repeat; 
+
+    .kitsSection-intro { flex: 0 0 510px; }
+
+    .kitsSection-heading {
+        color: #fff;
+        font-size: 2rem;
+        line-height: 1.2;
+        text-transform: none;
+    }
+
+    .camerasSection-highlight {
+        display: block;
+        color: #00d474;
+    }
+
+    .kitsSection-description {
+        color: #fff;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .camerasSection-button {
+        background: transparent;
+        border: 1px solid #00d474;
+        color: #00d474;
+        padding: 0.6rem 2.2rem;
+        border-radius: 3px;
+
+        &:hover { background: #00d474; color: #fff; }
+    }
+
+    .kitsSection-grid { grid-template-columns: repeat(3, 1fr); }
+
+    .kitsSection-grid > .product .card-figure { background: #fff; }
+}
+
+@media (max-width: 1024px) {
+    .camerasSection .kitsSection-intro { flex: none; }
+    .camerasSection .kitsSection-grid { grid-template-columns: repeat(2, 1fr); }
+}
