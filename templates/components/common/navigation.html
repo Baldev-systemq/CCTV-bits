@@ -1,18 +1,20 @@
 <nav class="navUser">
     <ul class="navUser-section navUser-section--alt">
-        <li class="navUser-item navUser-item--wishlist">
-            <a class="navUser-action" data-wishlist-preview data-dropdown="wishlist-preview-dropdown"
-                data-options="align:right" href="{{urls.wishlist}}" aria-label="{{lang 'wishlist.nav_aria_label'}}">
-                <i class="icon" aria-hidden="true">
-                    <img src="{{cdn 'assets/img/icon-wishlist.svg'}}" alt="wishlist icon" class="header-wishlist-icon">
-                </i>
-                <span
-                    class="{{#if wishlist.items}} countPill--positive{{/if}} wishlist-quantity">{{wishlist.quantity}}</span>
-                <span class="sr-only">Wishlist</span>
-            </a>
+        {{#if customer}}
+            <li class="navUser-item navUser-item--wishlist">
+                <a class="navUser-action" data-wishlist-preview data-dropdown="wishlist-preview-dropdown"
+                    data-options="align:right" href="{{urls.wishlist}}" aria-label="{{lang 'wishlist.nav_aria_label'}}">
+                    <i class="icon" aria-hidden="true">
+                        <img src="{{cdn 'assets/img/icon-wishlist.svg'}}" alt="wishlist icon" class="header-wishlist-icon">
+                    </i>
+                    <span
+                        class="{{#if wishlist.items}} countPill--positive{{/if}} wishlist-quantity">{{wishlist.quantity}}</span>
+                    <span class="sr-only">Wishlist</span>
+                </a>
 
-            <div class="dropdown-menu" id="wishlist-preview-dropdown" data-dropdown-content aria-hidden="true"></div>
-        </li>
+                <div class="dropdown-menu" id="wishlist-preview-dropdown" data-dropdown-content aria-hidden="true"></div>
+            </li>
+        {{/if}}
         <li class="navUser-item navUser-item--cart 1">
             <a class="navUser-action" data-cart-preview data-dropdown="cart-preview-dropdown" data-options="align:right"
                 href="{{urls.cart}}" aria-label="{{lang 'cart.nav_aria_label'}}">

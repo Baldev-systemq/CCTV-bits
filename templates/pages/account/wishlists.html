@@ -1,12 +1,18 @@
 {{#partial "page"}}
 <div class="container">
-{{#if settings.show_wishlist}}
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-    <h2 class="page-heading">{{lang 'account.wishlists.heading' }}</h2>
-    <div class="account account--fixedLarge">
-        {{> components/account/navigation account_page='wishlists'}}
-        {{> components/account/wishlist-list}}
-    </div>
+{{#if customer}}
+    {{#if settings.show_wishlist}}
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        <h2 class="page-heading">{{lang 'account.wishlists.heading' }}</h2>
+        <div class="account account--fixedLarge">
+            {{> components/account/navigation account_page='wishlists'}}
+            {{> components/account/wishlist-list}}
+        </div>
+    {{/if}}
+{{else}}
+    <script>
+        window.location.replace('{{urls.auth.login}}');
+    </script>
 {{/if}}
 </div>
 {{/partial}}

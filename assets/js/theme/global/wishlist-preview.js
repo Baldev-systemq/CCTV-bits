@@ -26,6 +26,18 @@ const setWishlistItems = items => {
     }
 };
 
+const isCustomerLoggedIn = () => {
+    const $wishlistLink = $('.navUser-item--wishlist [data-wishlist-preview]');
+
+    if (!$wishlistLink.length) {
+        return false;
+    }
+
+    const href = ($wishlistLink.attr('href') || '').toLowerCase();
+
+    return !href.includes('/login') && !href.includes('login.php');
+};
+
 const updateWishlistCounter = count => {
     const $wishlistQuantity = $('.wishlist-quantity');
 
@@ -39,6 +51,18 @@ const updateWishlistCounter = count => {
 };
 
 const renderWishlistDropdown = () => {
+    if (!isCustomerLoggedIn()) {
+        updateWishlistCounter(0);
+
+        const $dropdown = $('#wishlist-preview-dropdown');
+
+        if ($dropdown.length) {
+            $dropdown.empty();
+        }
+
+        return;
+    }
+
     const $dropdown = $('#wishlist-preview-dropdown');
     const $wishlistLink = $('.navUser-item--wishlist [data-wishlist-preview]');
     const items = getWishlistItems();
@@ -88,6 +112,18 @@ const renderWishlistDropdown = () => {
 const isProductInWishlist = productId => getWishlistItems().some(item => String(item.id) === String(productId));
 
 const syncWishlistButtonState = () => {
+    if (!isCustomerLoggedIn()) {
+        $('[data-product-id].card-wishlist-button').each((_, button) => {
+            const $button = $(button);
+            $button
+                .removeClass('is-active')
+                .attr('aria-pressed', 'false')
+                .text('♡');
+        });
+
+        return;
+    }
+
     $('[data-product-id].card-wishlist-button').each((_, button) => {
         const $button = $(button);
         const productId = $button.attr('data-product-id');
@@ -126,7 +162,30 @@ const addWishlistProduct = product => {
     syncWishlistButtonState();
 };
 
+const isWishlistRoute = () => {
+    const path = (window.location.pathname || '').toLowerCase();
+
+    return path.includes('/wishlist')
+        || path.includes('/wishlists')
+        || path.includes('/account/wishlist')
+        || path.includes('/account/wishlists');
+};
+
 const renderLocalWishlistPage = () => {
+    if (!isCustomerLoggedIn() || !isWishlistRoute()) {
+        $('#local-wishlist-items').remove();
+
+        if ($('.wishlists-table').length) {
+            $('.wishlists-table').show();
+        }
+
+        if ($('.alert-info').length) {
+            $('.alert-info').show();
+        }
+
+        return;
+    }
+
     const items = getWishlistItems();
     const $wishlistGrid = $('.wishlistGrid');
 
@@ -259,6 +318,11 @@ const createWishlistProductData = $form => {
 };
 
 export default function wishlistPreview() {
+    if (window.location.pathname.toLowerCase().includes('wishlist') && !isCustomerLoggedIn()) {
+        window.location.href = '/login.php';
+        return;
+    }
+
     renderWishlistDropdown();
     renderLocalWishlistPage();
     syncWishlistButtonState();
@@ -298,6 +362,11 @@ export default function wishlistPreview() {
 
     $(document).on('click', '.card-wishlist-button[data-product-id]', event => {
         event.preventDefault();
+
+        if (!isCustomerLoggedIn()) {
+            window.location.href = '/login.php';
+            return;
+        }
 
         const $button = $(event.currentTarget);
         const productId = $button.attr('data-product-id');
